@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Single Extension Testing</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+  </head>
+  <body>
+    <div class = "container" id = "standard_buttons">
+      <br>
+      <button class = "btn" id = "Databases"> Databases </button>
+      <br><br>
+      <a class="btn tooltipped" data-position="left" data-tooltip="Coming Soon" data-margin="2">Custom Links</a>
+      <br><br> 
+      <a class="btn tooltipped" data-position="left" data-tooltip="Coming Soon" data-margin="2">Miscellaneous</a>
+      <br><br>     
+
+    </div>
+
+    <div class="container" id="database_buttons" style="display:none; margin-top: 0%;">
+      <button class="btn" id="add_Databases">Add Databases</button>
+      <button class="btn" id="delete_Databases">Delete Databases</button>
+      <button class="btn" id="outdated_Dababases">Remove Outdated</button>
+      <button class="btn" id="ep_Databases">EP Only</button>
+
+      <button class="btn-small orange" id="db_back">
+        <i class="material-icons">subdirectory_arrow_left </i>
+      </button>
+    </div>
+
+
+
+
+      <!--Upload Files DIV BEGINS-->
+    <div class="container" id = "uploadList" style="display:none;">
+      <div class="file-field input-field"  >
+       <div class="btn"><span>Browse</span><input type="file" id="fileInput" required/>
+      </div>
+      <div class="file-path-wrapper"><input class="file-path validate"type="text"placeholder="Upload file"/>
+      </div>
+      <button class="btn waves-effect waves-light"type="submit"name="action"id="submitButton">Submit
+        <i class="material-icons right">send</i></button> 
+
+      <button class="btn-small orange" id="db_back_1">
+        <i class="material-icons">subdirectory_arrow_left </i>
+      </button>         
+    </div>
+  </div>
+    <!--Upload Files DIV ENDS-->
+
+
+
+    <!--REMOVE OUTDATED DATABASES BEGINS-->
+    <div class="container" id ="outdatedSubmitButton" style="display:none">
+      <blockquote><h6>Click the Submit Button to <b>REMOVE</b> all Outdated Databases</h6></blockquote>
+      
+      <button class="btn waves-effect waves-light" type="submit" name="action" id= "outdatedSubmit">Submit
+        <i class="material-icons right">send</i>
+      </button>
+
+      <button class="btn-small orange" id="db_back_2">
+        <i class="material-icons">subdirectory_arrow_left </i>
+      </button>         
+
+    </div>
+
+    <!--REMOVE OUTDATED DATABASES ENDS-->
+
+    <!--Enable All EP Databases-->
+    <div class="container" id ="enableEpSubmitButton" style="display:none">
+      <blockquote><h6>Click the Submit Button to <b>ENABLE</b> all EP Databases</h6></blockquote>
+      
+         
+      <button class="btn waves-effect waves-light" type="submit" name="action" id= "epSubmit">Submit
+        <i class="material-icons right">send</i>
+      </button>
+
+      <button class="btn-small orange" id="db_back_3">
+        <i class="material-icons">subdirectory_arrow_left </i>
+      </button>         
+
+    </div>
+    <!--Enable All EP Databases-->
+
+
+
+
+
+
+
+<script src="popup.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+html,body{
+    font-family: 'open Sans',sans-serif;
+    font-size: 14px;
+    margin:0px;
+    height: 150px;
+    width: 200px;
+    background-color: whitesmoke;
+}
+
+.btn {
+   width: 100%;
+}
+
+
+.fixed-action-btn{
+  margin:0px;
+  padding:none;
+}
+
+
+.btn-small{
+  margin-top: 2%;
+}
+
+
+h6{
+  font-family: "Roboto";
+ }
