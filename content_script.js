@@ -12,7 +12,9 @@ function message(request, sender, sendResponse) {
 		var key = "Out";
       runOutdatedFunction(key);
     } else if (request.passcode === "enableEP") {
+      console.log('Enable EP Message received');
       chrome.storage.local.set({ "message": "ep" });
+      dispatchAll();
     } else {
       console.log('Nothing has been received');
     }
@@ -118,6 +120,7 @@ window.addEventListener('load', function () {
   chrome.storage.local.get("message", checkEp);
   function checkEp(param) {
     if (param.message === "ep") {
+      overWriteConfirm();
       console.log('Run EP Database Function');
       var dbNamesArray = window.document.querySelectorAll('span[id*="DisplayName_"]');
       var epArray = Array.prototype.slice.call(dbNamesArray);
@@ -125,14 +128,12 @@ window.addEventListener('load', function () {
         if (epArray[i].innerText.match(/\(([a-z]){3}\)$/))
           epArray[i].parentElement.nextElementSibling.querySelectorAll('input[type=radio]')[0].click()
       }
-      // var img = newArray[lastArrElement].parentElement.previousElementSibling.previousElementSibling.getElementsByTagName('img')[0];
-      // var imgsrc = img.src;
-      // var substring = "arwSmallDownOn";
-      chrome.storage.local.clear();
+      nxtPage()
+      
     }
   }
 	} catch(error){
-		console.log('failed to run macro, Try Again')
+		console.log('failed to run epMacro, Try Again')
 		chrome.storage.local.clear();
 	}
 });

@@ -120,9 +120,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 /*Remove Outdated Databases */
 /*Enable EP Databases */
-// document.addEventListener("DOMContentLoaded", function() {
-  // document.getElementById("epSubmit").addEventListener("click",enableEpDbs);
-// });
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("epSubmit").addEventListener("click",enableEpDbs);
+});
 /*Enable EP Databases */
 
 
