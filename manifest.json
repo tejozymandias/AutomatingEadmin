@@ -7,7 +7,7 @@
   "icons":{"128":"images/icon.png"},
   "content_scripts": [
   {
-    "matches": ["<all_urls>"],
+    "matches": ["http://eadmin.ebscohost.com/EAdmin/Profiles/CustomizeServiceDatabasesForm.aspx","https://eadmin.ebscohost.com/EAdmin/Profiles/CustomizeServiceDatabasesForm.aspx"],
     "js": ["js/functions.js","content_script.js"]
   }
 ],
