@@ -125,7 +125,7 @@ window.addEventListener('load', function () {
       var dbNamesArray = window.document.querySelectorAll('span[id*="DisplayName_"]');
       var epArray = Array.prototype.slice.call(dbNamesArray);
       for (var i = 0; i < epArray.length; i++) {
-        if (epArray[i].innerText.match(/\(([a-z]){3}\)$/))
+        if (epArray[i].innerText.match(/\(([\w]){3}\)$/))
           epArray[i].parentElement.nextElementSibling.querySelectorAll('input[type=radio]')[0].click()
       }
       nxtPage()

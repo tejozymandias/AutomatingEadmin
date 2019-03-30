@@ -43,10 +43,10 @@ if(getNxtArrow[arrNumber].innerHTML.indexOf("arwSmallDownOn") !== -1){
 function overWriteConfirm(){
 var disablerFunction = function() {
   window.alert = function alert(msg) {
-    console.log("Hidden Alert " + msg);
+    
   };
   window.confirm = function confirm(msg) {
-    console.log("Hidden Confirm " + msg);
+    
     return true;
   };
 };
