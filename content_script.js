@@ -6,8 +6,7 @@ function message(request, sender, sendResponse) {
     if ((request[0] === ("add_key")) || (request[0] === ("delete_key"))) {
       var tempArray = request.slice();
       chrome.storage.local.set({ "storageArray": tempArray });
-      document.getElementById('ddlShowOptions').value = "A";
-      document.getElementById('ddlShowOptions').dispatchEvent(new Event('change'));
+      dispatchAll();
 
     } else if (request.passcode === "removeOutdated") {
 		var key = "Out";
@@ -36,46 +35,37 @@ function message(request, sender, sendResponse) {
 
 
 /* Add/remove Databases Function Content Script */
-window.addEventListener('load', function() { 
-try{
-  chrome.storage.local.get("storageArray", chkAddOrDel);
-  function chkAddOrDel(result) {
-    if (result.storageArray) {
-		overWriteConfirm();
-      var trimmedArr = result.storageArray.map(s => s.trim());
-      var gatherElementIds = window.document.querySelectorAll('span[id*="DisplayName_"]');
-      var newArray = Array.prototype.slice.call(gatherElementIds);
-      var lastArrElement = newArray.length - 1;
-      var img = newArray[lastArrElement].parentElement.previousElementSibling.previousElementSibling.getElementsByTagName('img')[0];
-      var imgsrc = img.src;
-      var substring = "arwSmallDownOn";
-      for (var i = 0; i < newArray.length; i++) {
-        if (trimmedArr[0] == "add_key") {
-          if (trimmedArr.indexOf(newArray[i].innerText) != -1) {
-            newArray[i].parentElement.nextElementSibling.querySelectorAll('input[type=radio]')[0].click()
+window.addEventListener('load', function () {
+  try {
+    chrome.storage.local.get("storageArray", chkAddOrDel);
+    function chkAddOrDel(result) {
+      if (result.storageArray) {
+        overWriteConfirm();
+        var trimmedArr = result.storageArray.map(s => s.trim());
+        var gatherElementIds = window.document.querySelectorAll('span[id*="DisplayName_"]');
+        var newArray = Array.prototype.slice.call(gatherElementIds);
+        for (var i = 0; i < newArray.length; i++) {
+          if (trimmedArr[0] == "add_key") {
+            if (trimmedArr.indexOf(newArray[i].innerText) != -1) {
+              newArray[i].parentElement.nextElementSibling.querySelectorAll('input[type=radio]')[0].click()
+            }
+          } else if (trimmedArr[0] == "delete_key") {
+            if (trimmedArr.indexOf(newArray[i].innerText) != -1) {
+              newArray[i].parentElement.nextElementSibling.querySelectorAll('input[type=radio]')[1].click()
+            }
           }
-        } else if (trimmedArr[0] == "delete_key") {
-          if (trimmedArr.indexOf(newArray[i].innerText) != -1) {
-            newArray[i].parentElement.nextElementSibling.querySelectorAll('input[type=radio]')[1].click()
-          }
+
         }
+        nxtPage();
 
-      } if (imgsrc.indexOf(substring) !== -1) {
-        console.log('nxtbutton');
-        newArray[lastArrElement].parentElement.previousElementSibling.previousElementSibling.getElementsByTagName('img')[0].click();
       } else {
-        console.log('No More Next Button');
-        chrome.storage.local.clear();
-        return;
-      }
-    } else {
-      console.log("no storage area");
+        console.log("No Input from Database Buttons received");
 
-    } 
+      }
     }
-  } catch(error){
-	  console.log(error);
-	  chrome.storage.local.clear();
+  } catch (error) {
+    console.log(error);
+    chrome.storage.local.clear();
   }
 })
 
@@ -102,23 +92,24 @@ else{console.log('key not found')};
 /*Outdated Function Content Script */
 window.addEventListener('load', function () {
   chrome.storage.local.get("message", checkOutdated);
-  function checkOutdated(param) {	 
+  function checkOutdated(param) {
     if (param.message === "outdated") {
-		overWriteConfirm();
-		var presentDay = todayDate();
-       var gatherEndDates = window.document.querySelectorAll('span[id*="AccessEndDate"]');
+      overWriteConfirm();
+      var presentDay = todayDate();
+      var gatherEndDates = window.document.querySelectorAll('span[id*="AccessEndDate"]');
       var newEndDates = Array.prototype.slice.call(gatherEndDates);
       for (var i = 0; i < newEndDates.length; i++) {
         var tempDate = newEndDates[i].innerText.slice(0, 9)
         if (process(tempDate) < process(presentDay)) {
           newEndDates[i].parentElement.previousElementSibling.previousElementSibling.querySelectorAll('input[type=radio]')[1].click();
-         console.log('Disable Database expression '+tempDate);
+          console.log('Disable Database expression ' + tempDate);
         }
       }
-		nxtPage();
-      } 
-	  chrome.storage.local.clear();
-}})
+      nxtPage();
+    } 
+
+  }
+})
 
 
 /*EpFunction Content Script */

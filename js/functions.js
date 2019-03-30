@@ -11,6 +11,15 @@ var todayDate = function(){
 	  return today;
 }
 
+function dispatchAll() {
+  var currentOption = document.getElementById('ddlShowOptions');
+  if(currentOption.value === "A"){
+    location.reload();
+  } else {
+  document.getElementById('ddlShowOptions').value = "A";
+  document.getElementById('ddlShowOptions').dispatchEvent(new Event('change'));
+  }
+}
 
 function process(date){
   var parts = date.split("/");
@@ -21,12 +30,13 @@ function process(date){
 function nxtPage(){
 var getNxtArrow = document.getElementsByClassName('DataGrid-EmptyWhiteStyle');
 	  var arrNumber = getNxtArrow.length-2;	
-if(getNxtArrow[arrNumber].innerHTML.indexOf("arwSmallDown") !== -1){
+if(getNxtArrow[arrNumber].innerHTML.indexOf("arwSmallDownOn") !== -1){
 		getNxtArrow[arrNumber].childNodes[0].click();
 } else {
-	chrome.storage.local.clear();
-	return;
-}
+  chrome.storage.local.clear();
+  document.getElementById('SubmitButton').click();
+  console.log('submit sent');
+	}
 }
 
 // overwrite confirm box
