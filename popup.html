@@ -23,9 +23,9 @@
       <br>
       <button class = "btn" id = "Databases"> Databases </button>
       <br><br>
-      <a class="btn tooltipped" data-position="left" data-tooltip="Coming Soon" data-margin="2">Custom Links</a>
+      <button class = "btn" id = "CustomLinks">Custom Links</button>
       <br><br> 
-      <a class="btn tooltipped" data-position="left" data-tooltip="Coming Soon" data-margin="2">Miscellaneous</a>
+      <a class="btn tooltipped" data-position="left" data-tooltip="Coming Soon" data-margin="2">HLM</a>
       <br><br>     
 
     </div>
@@ -37,6 +37,17 @@
       <button class="btn" id="ep_Databases">ADD EP Only</button>
 
       <button class="btn-small orange" id="db_back">
+        <i class="material-icons">subdirectory_arrow_left </i>
+      </button>
+    </div>
+
+    <div class="container" id="customLinks_buttons" style="display:none; margin-top: 0%;">
+      <button class="btn" id="remove_All">Remove All </button>
+      <button class="btn" id="remove_Some">Remove Selected </button>
+      <button class="btn" id="enable_OpenAccess">Enable OA </button>
+      <button class="btn" id="enable_File">Enable Selected </button>
+
+      <button class="btn-small orange" id="cl_back">
         <i class="material-icons">subdirectory_arrow_left </i>
       </button>
     </div>
@@ -96,7 +107,40 @@
     <!--Enable All EP Databases-->
 
 
+<!--------------------------------------------------------- CustomLinks Buttons Intefaces--------------------------------------------------------------------------->
 
+
+<!--Remove All CustomLinks-->
+<div class="container" id ="removeAllCustomLinks" style="display:none">
+  <blockquote><h6>Click the Submit Button to <b>REMOVE</b> all CustoM Links</h6></blockquote>
+  
+     
+  <button class="btn waves-effect waves-light" type="submit" name="action" id= "removeAllCls">Submit
+    <i class="material-icons right">send</i>
+  </button>
+
+  <button class="btn-small orange" id="cl_back_1">
+    <i class="material-icons">subdirectory_arrow_left </i>
+  </button>         
+
+</div>
+<!--Remove All CustomLinks-->
+
+<!--Remove CustomLinks from an Upload File-->
+<div class="container" id ="removeAllCustomLinks" style="display:none">
+  <blockquote><h6>Remove CustomLinks by uploading a File</h6></blockquote>
+  
+     
+  <button class="btn waves-effect waves-light" type="submit" name="action" id= "removeAllCls">Submit
+    <i class="material-icons right">send</i>
+  </button>
+
+  <button class="btn-small orange" id="cl_back_1">
+    <i class="material-icons">subdirectory_arrow_left </i>
+  </button>         
+
+</div>
+<!--Remove CustomLinks from an Upload File-->
 
 
 

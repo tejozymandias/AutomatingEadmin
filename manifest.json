@@ -8,7 +8,10 @@
   "content_scripts": [
   {
     "matches": ["http://eadmin.ebscohost.com/EAdmin/Profiles/CustomizeServiceDatabasesForm.aspx","https://eadmin.ebscohost.com/EAdmin/Profiles/CustomizeServiceDatabasesForm.aspx"],
-    "js": ["js/functions.js","content_script.js"]
+    "js": ["js/functions.js","content_script1.js"]
+  },{
+    "matches":["http://eadmin.ebscohost.com/EAdmin/Profiles/CustomizeServiceLinkingForm.aspx","https://eadmin.ebscohost.com/EAdmin/Profiles/CustomizeServiceLinkingForm.aspx"],
+    "js":["js/functions.js","js/add_button.js","content_script2.js"]
   }
 ],
    "browser_action":{

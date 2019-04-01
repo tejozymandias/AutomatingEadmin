@@ -1,25 +1,30 @@
 /* Toggle Back Buttons begins */
 var db_back = document.getElementById("db_back");
-db_back.addEventListener("click", showMainPage, false);
+db_back.addEventListener("click", showMainBtns, false);
+var cl_back = document.getElementById("cl_back");
+cl_back.addEventListener("click", showMainBtns, false);
 
- function showMainPage() {
+ function showMainBtns() {
 document.getElementById('standard_buttons').style.display = "block";
 document.getElementById('database_buttons').style.display = "none";
+document.getElementById('customLinks_buttons').style.display = "none";
 chrome.storage.local.clear();
 }
 
 var db_back_1 = document.getElementById("db_back_1");
-db_back_1.addEventListener("click", showDbPage, false);
+db_back_1.addEventListener("click", showDbBtns, false);
 var db_back_2 = document.getElementById("db_back_2");
-db_back_2.addEventListener("click", showDbPage, false);
+db_back_2.addEventListener("click", showDbBtns, false);
 var db_back_3 = document.getElementById("db_back_3");
-db_back_3.addEventListener("click", showDbPage, false);
+db_back_3.addEventListener("click", showDbBtns, false);
 
 
- function showDbPage() {
+
+ function showDbBtns() {
 document.getElementById('database_buttons').style.display = "block";
-document.getElementById('standard_buttons').style.display = "none";
 document.getElementById('uploadList').style.display = "none";
+document.getElementById('customLinks_buttons').style.display = "none";
+document.getElementById('standard_buttons').style.display = "none";
 document.getElementById('outdatedSubmitButton').style.display = "none";
 document.getElementById('enableEpSubmitButton').style.display = "none";
 chrome.storage.local.clear();
@@ -34,13 +39,25 @@ $(document).ready(function(){
 
 
  /* 2nd Layer Button Defintions begins*/
- const dbBtnClick = document.getElementById("Databases");
- dbBtnClick.addEventListener("click", shwDbPage, false);
+const dbBtnClick = document.getElementById("Databases");
+dbBtnClick.addEventListener("click", showDbPage, false);
 
- function shwDbPage() {
-   document.getElementById('database_buttons').style.display = "block";
-   document.getElementById('standard_buttons').style.display = "none";
-    }
+function showDbPage() {
+  document.getElementById('database_buttons').style.display = "block";
+  document.getElementById('standard_buttons').style.display = "none";
+  document.getElementById('customLinks_buttons').style.display = "none";
+}
+
+
+const clBtnClick = document.getElementById("CustomLinks");
+CustomLinks.addEventListener("click", showClPage, false);
+
+function showClPage() {
+  document.getElementById('customLinks_buttons').style.display = "block";
+  document.getElementById('database_buttons').style.display = "none";
+  document.getElementById('standard_buttons').style.display = "none";
+}
+
   /* 2nd Layer Button Defintions ends */
 
 
@@ -56,9 +73,10 @@ $(document).ready(function(){
  del_DbBtnClick.myParam = "delete_key";
 
 function uploadPage(evt){
-  document.getElementById('uploadList').style.display = "block";
   document.getElementById('database_buttons').style.display = "none";
   document.getElementById('standard_buttons').style.display = "none";
+  document.getElementById('customLinks_buttons').style.display = "none";
+  document.getElementById('uploadList').style.display = "block";
   var secretKey = evt.target.myParam;
 chrome.storage.local.set({ uploadStatus: secretKey }, function() {
   console.log("Value is set to " + secretKey);
@@ -68,11 +86,13 @@ chrome.storage.local.set({ uploadStatus: secretKey }, function() {
 document.getElementById("outdated_Dababases").addEventListener("click", function(){
   document.getElementById('database_buttons').style.display = "none";
   document.getElementById('standard_buttons').style.display = "none";
+  document.getElementById('customLinks_buttons').style.display = "none";
   document.getElementById('outdatedSubmitButton').style.display = "block";
 });
 document.getElementById("ep_Databases").addEventListener("click", function(){
   document.getElementById('database_buttons').style.display = "none";
   document.getElementById('standard_buttons').style.display = "none";
+  document.getElementById('customLinks_buttons').style.display = "none";
   document.getElementById('enableEpSubmitButton').style.display = "block";
 });
     /* 3rd Layer Button Defintions ends */
